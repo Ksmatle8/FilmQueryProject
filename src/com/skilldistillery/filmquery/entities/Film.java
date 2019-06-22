@@ -1,17 +1,27 @@
 package com.skilldistillery.filmquery.entities;
 
+import java.util.List;
+
 public class Film {
 	private int id;
 	private String title;
 	private String description;
 	private int releaseYear;
-	private int languageId;
+	private String languageId;
 	private int rentalDuration;
 	private double rentalRate;
 	private int length;
 	private double replacementCost;
 	private String rating;
 	private String specialFeatures;
+	private List<Actor> actors;
+	
+	public void printActors () {
+		for (Actor actor : actors) {
+			System.out.println(actor.getFirstName() + " " + actor.getLastName());
+		}
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -19,10 +29,19 @@ public class Film {
 	@Override
 	public String toString() {
 		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
-				+ ", languageId=" + languageId + ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate
+				+ ", language=" + languageId + ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate
 				+ ", length=" + length + ", replacementCost=" + replacementCost + ", rating=" + rating
 				+ ", specialFeatures=" + specialFeatures + "]";
 	}
+	
+	public List<Actor> getActors() {
+		return actors;
+	}
+
+	public void setActors(List<Actor> actors) {
+		this.actors = actors;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -44,10 +63,10 @@ public class Film {
 	public void setReleaseYear(int releaseYear) {
 		this.releaseYear = releaseYear;
 	}
-	public int getLanguageId() {
+	public String getLanguageId() {
 		return languageId;
 	}
-	public void setLanguageId(int languageId) {
+	public void setLanguageId(String languageId) {
 		this.languageId = languageId;
 	}
 	public int getRentalDuration() {
@@ -86,7 +105,7 @@ public class Film {
 	public void setSpecialFeatures(String specialFeatures) {
 		this.specialFeatures = specialFeatures;
 	}
-	public Film(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
+	public Film(int id, String title, String description, int releaseYear, String languageId, int rentalDuration,
 			double rentalRate, int length, double replacementCost, String rating, String specialFeatures) {
 		super();
 		this.id = id;
@@ -102,13 +121,34 @@ public class Film {
 		this.specialFeatures = specialFeatures;
 	}
 	
+	public Film(int id, String title, String description, int releaseYear, String languageId, int rentalDuration,
+			double rentalRate, int length, double replacementCost, String rating, String specialFeatures,
+			List<Actor> actors) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.releaseYear = releaseYear;
+		this.languageId = languageId;
+		this.rentalDuration = rentalDuration;
+		this.rentalRate = rentalRate;
+		this.length = length;
+		this.replacementCost = replacementCost;
+		this.rating = rating;
+		this.specialFeatures = specialFeatures;
+		this.actors = actors;
+	}
+
+	public Film() {	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((actors == null) ? 0 : actors.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
-		result = prime * result + languageId;
+		result = prime * result + ((languageId == null) ? 0 : languageId.hashCode());
 		result = prime * result + length;
 		result = prime * result + ((rating == null) ? 0 : rating.hashCode());
 		result = prime * result + releaseYear;
@@ -134,6 +174,13 @@ public class Film {
 			return false;
 		}
 		Film other = (Film) obj;
+		if (actors == null) {
+			if (other.actors != null) {
+				return false;
+			}
+		} else if (!actors.equals(other.actors)) {
+			return false;
+		}
 		if (description == null) {
 			if (other.description != null) {
 				return false;
@@ -144,7 +191,11 @@ public class Film {
 		if (id != other.id) {
 			return false;
 		}
-		if (languageId != other.languageId) {
+		if (languageId == null) {
+			if (other.languageId != null) {
+				return false;
+			}
+		} else if (!languageId.equals(other.languageId)) {
 			return false;
 		}
 		if (length != other.length) {
