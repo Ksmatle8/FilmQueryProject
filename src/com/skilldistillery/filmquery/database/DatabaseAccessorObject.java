@@ -30,7 +30,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				stmt.setInt(1, filmId);
 				ResultSet rs = stmt.executeQuery();
 				while (rs.next()) {
-					int id = rs.getInt("id");
+					//int id = rs.getInt("id");
 					String title = rs.getString("title");
 					String desc = rs.getString("description");
 					short releaseYear = rs.getShort("release_year");

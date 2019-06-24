@@ -5,9 +5,13 @@ public class Actor {
 	private String firstName;
 	private String lastName;
 	
+//	@Override
+//	public String toString() {
+//		return "Actor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+//	}
 	@Override
 	public String toString() {
-		return "Actor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+		return "Id = " + id + ", First Name = " + firstName + ", Last Name = " + lastName;
 	}
 	public int getId() {
 		return id;
@@ -75,7 +79,4 @@ public class Actor {
 		}
 		return true;
 	}
-
-	
-	
 }

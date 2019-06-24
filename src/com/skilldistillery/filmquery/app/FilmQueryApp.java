@@ -1,10 +1,8 @@
 package com.skilldistillery.filmquery.app;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import javax.sound.midi.SysexMessage;
 
 import com.skilldistillery.filmquery.database.DatabaseAccessor;
 import com.skilldistillery.filmquery.database.DatabaseAccessorObject;
@@ -26,14 +24,14 @@ public class FilmQueryApp {
 		app.launch();
 	}
 
-	private void test() {
-		Film film = db.findFilmById(1);
-		film.printActors();
-		Actor actor = db.findActorById(1);
-		System.out.println(actor);
-		List<Actor> actors = db.findActorsByFilmId(1);
-		System.out.println(actors.size());
-	}
+//	private void test() {
+//		Film film = db.findFilmById(1);
+//		film.printActors();
+//		Actor actor = db.findActorById(1);
+//		System.out.println(actor);
+//		List<Actor> actors = db.findActorsByFilmId(1);
+//		System.out.println(actors.size());
+//	}
 
 	private void launch() {
 		Scanner input = new Scanner(System.in);
@@ -45,7 +43,6 @@ public class FilmQueryApp {
 			input.nextLine();
 		}
 		}
-
 		input.close();
 	}
 
@@ -58,6 +55,7 @@ public class FilmQueryApp {
 			System.out.println("2. Look up a film by a search keyword.");
 			System.out.println("3. Exit the application.");
 			int userInput = input.nextInt();
+			System.out.println();
 			switch (userInput) {
 			// films by id
 			case 1:
@@ -68,6 +66,7 @@ public class FilmQueryApp {
 					System.out.println(byID);
 				}else {
 					System.out.println("Film not found");
+					System.out.println();
 				}
 				break;
 
@@ -82,10 +81,12 @@ public class FilmQueryApp {
 					System.out.println(film);
 					List<Actor> actors = db.findActorsByFilmId(film.getId());
 					System.out.println(actors);
+					System.out.println();
 				}
 
 				}else {
 					System.out.println("Keyword not found");
+					System.out.println();
 				}
 				break;
 				//exit program
@@ -97,6 +98,7 @@ public class FilmQueryApp {
 				//invalid input
 			default:
 				System.out.println("Pick a correct choice");
+				System.out.println();
 			}
 		} while (userWrongInput);
 

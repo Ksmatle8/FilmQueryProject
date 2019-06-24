@@ -26,12 +26,19 @@ public class Film {
 		return id;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
+//				+ ", language=" + languageId + ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate
+//				+ ", length=" + length + ", replacementCost=" + replacementCost + ", rating=" + rating
+//				+ ", specialFeatures=" + specialFeatures + "]";
+//	}
+	
 	@Override
 	public String toString() {
-		return "Film [id=" + id + ", title=" + title + ", description=" + description + ", releaseYear=" + releaseYear
-				+ ", language=" + languageId + ", rentalDuration=" + rentalDuration + ", rentalRate=" + rentalRate
-				+ ", length=" + length + ", replacementCost=" + replacementCost + ", rating=" + rating
-				+ ", specialFeatures=" + specialFeatures + "]";
+		return "Title = " + title + "\n" + "Release Year = " + releaseYear + "\n" 
+				+ "Rating = " + rating + "\n" + "Language = " + languageId + "\n"
+				+ "Description = " + description + "\n";
 	}
 	
 	public List<Actor> getActors() {
