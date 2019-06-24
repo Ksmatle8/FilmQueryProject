@@ -16,7 +16,6 @@ looking up information unitl you ented 3 to exit the program.
 ### Technologies Used
 
 * Java
-* Ecliple
 * Object-Relational Mapping
 * Atom
 * Terminal
