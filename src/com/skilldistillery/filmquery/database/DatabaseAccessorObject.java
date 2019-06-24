@@ -22,9 +22,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			}
 			Film film = null;
 			try {
-				String sql = "SELECT id, title, description, release_year, language_id, rental_duration, ";
-				sql += " rental_rate, length, replacement_cost, rating, special_features "
-						+ " FROM film Where film.id = ?";
+				String sql = "SELECT film.id, film.title, film.description, film.release_year, language.name, film.rental_duration, film.rental_rate, film.length, film.replacement_cost,film.rating, film.special_features FROM film Join language on film.language_id = language.id Where film.id = ?";
 
 				PreparedStatement stmt = conn.prepareStatement(sql);
 				stmt.setInt(1, filmId);
@@ -34,7 +32,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 					String title = rs.getString("title");
 					String desc = rs.getString("description");
 					short releaseYear = rs.getShort("release_year");
-					String langId = rs.getString("language_id");
+					String langId = rs.getString("language.name");
 					int rentDur = rs.getInt("rental_duration");
 					double rate = rs.getDouble("rental_rate");
 					int length = rs.getInt("length");

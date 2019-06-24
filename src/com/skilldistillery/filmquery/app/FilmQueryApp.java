@@ -64,6 +64,12 @@ public class FilmQueryApp {
 				Film byID = db.findFilmById(id);
 				if(byID instanceof Film) {
 					System.out.println(byID);
+					List<Actor> actors = db.findActorsByFilmId(byID.getId());
+					for (Actor actor : actors) {
+						System.out.println(actor);
+					}
+					//System.out.println(actors);
+					System.out.println();
 				}else {
 					System.out.println("Film not found");
 					System.out.println();
@@ -80,7 +86,10 @@ public class FilmQueryApp {
 					for (Film film : films) {
 					System.out.println(film);
 					List<Actor> actors = db.findActorsByFilmId(film.getId());
-					System.out.println(actors);
+					for (Actor actor : actors) {
+						System.out.println(actor);
+					}
+					//System.out.println(actors);
 					System.out.println();
 				}
 
